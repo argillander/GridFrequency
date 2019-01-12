@@ -1,6 +1,11 @@
 # GridFrequency
 Python wrapper for obtaining the current frequency of the Swedish national power grid
 
+### Sources
+https://www.svk.se/drift-av-stamnatet/kontrollrummet/ (Swedish National Grid - Inspiration)
+http://driftsdata.statnett.no/restapi/ (Norwegian National Grid - data provider)
+
+
 ## Continous measurement
 ```python
 pollGridFrequency()
