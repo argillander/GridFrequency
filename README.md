@@ -2,7 +2,7 @@
 Python wrapper for obtaining the current frequency of the Swedish national power grid
 
 ### Sources
-https://www.svk.se/drift-av-stamnatet/kontrollrummet/ (Swedish National Grid - Inspiration)
+https://www.svk.se/drift-av-stamnatet/kontrollrummet/ (Swedish National Grid - Inspiration to this project)
 http://driftsdata.statnett.no/restapi/ (Norwegian National Grid - data provider)
 
 
