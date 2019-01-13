@@ -9,23 +9,24 @@ http://driftsdata.statnett.no/restapi/ (Norwegian National Grid - data provider)
 ## Continous measurement
 ```python
 pollGridFrequency()
-""" Polls every 0.5s [default], only printing result [default]. Calls callback only if value changed [default]"""
 ```
+Polls every 0.5s [default], only printing result [default]. Calls callback only if value changed [default]
+
 ```python
  pollGridFrequency(my_callback, 0.1)
-""" Polls with custom callback function my_callback taking ONE argument (frequency). 
-I.e. my_callback(freq) is called. Custom refresh rate """
 ```
+Polls with custom callback function my_callback taking ONE argument (frequency). I.e. my_callback(freq) is called. Custom refresh rate.
 ```python
  pollGridFrequency(None, 2, False)
-""" No callback (prints values only), polling every 2s and returning values 
-regardless of whether they have changed. """
 ```
+No callback (prints values only), polling every 2s and returning values regardless of whether they have changed.
+
 ## Obtain a single frequency measurement
 ```python
  print("This is freq: " + str(getCurrentFrequency()[1]))
-""" Single-capture frequency. """
 ```
+Single-capture frequency.
+
 ## Callback
 The data obtained in the continous polling is passed to a provided callback. The format of the callback is as follows
 ```python
