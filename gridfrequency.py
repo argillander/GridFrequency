@@ -23,7 +23,6 @@ def getCurrentFrequency(last_time_stamp=0):
     Retrieves current frequency of the national grid. Parameter last_last_time_stamp optional.
     If omitted or set to 0, returns all possible frequency measurements
     """
-    # print("Cur time: -- F:" + str(lastTimeStamp) + " T: " + str(getCurrentTimeStamp()))
     f_url = URL.format(last_time_stamp, getCurrentTimeStamp())
     res = req.get(f_url)
     if res.ok:
@@ -31,10 +30,6 @@ def getCurrentFrequency(last_time_stamp=0):
         arr = js["Measurements"]
         cur_phase = arr[len(arr) - 1]
         return cur_phase[0], cur_phase[1]
-
-
-def cb(freq):
-    print("From CB: " + str(freq))
 
 
 def pollGridFrequency(callback=None, poll_period=0.5, notify_only_if_freq_changed=True):
@@ -45,7 +40,7 @@ def pollGridFrequency(callback=None, poll_period=0.5, notify_only_if_freq_change
     last_time_stamp = 0
     while True:
         last_time_stamp, cur_freq = getCurrentFrequency(last_time_stamp)
-        if notify_only_if_freq_changed and cur_freq != last_freq:
+        if (not notify_only_if_freq_changed) or (cur_freq != last_freq):
             last_freq = cur_freq
             if not callback:
                 print("Current grid frequency: {} Hz".format(cur_freq))
