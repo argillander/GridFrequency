@@ -22,13 +22,13 @@ Custom refresh rate """
 """ No callback (prints values only), polling every 2s and returning values 
 regardless of whether they have changed. """
 ```
-## Obtain single frequency measurement
+## Obtain a single frequency measurement
 ```python
  print("This is freq: " + str(getCurrentFrequency()[1]))
 """ Single-capture frequency. """
 ```
 ## Callback
-The data obtained is passed via a provided callback. The format of the callback is as follows
+The data obtained in the continous polling is passed to a provided callback. The format of the callback is as follows
 ```python
 def my_callback(frequency):
   desired_freq = 50
