@@ -24,12 +24,16 @@ def getCurrentFrequency(last_time_stamp=0):
     If omitted or set to 0, returns all possible frequency measurements
     """
     f_url = URL.format(last_time_stamp, getCurrentTimeStamp())
+    # print("FURL: " + f_url)
     res = req.get(f_url)
     if res.ok:
+        print("Enschuldigen, got data!")
         js = json.loads(res.content)
         arr = js["Measurements"]
         cur_phase = arr[len(arr) - 1]
         return cur_phase[0], cur_phase[1]
+    else:
+        print("Enschuldigen")
 
 
 def pollGridFrequency(callback=None, poll_period=0.5, notify_only_if_freq_changed=True):
@@ -39,6 +43,7 @@ def pollGridFrequency(callback=None, poll_period=0.5, notify_only_if_freq_change
     last_freq = 0
     last_time_stamp = 0
     while True:
+        print("Enschulic")
         last_time_stamp, cur_freq = getCurrentFrequency(last_time_stamp)
         if (not notify_only_if_freq_changed) or (cur_freq != last_freq):
             last_freq = cur_freq
@@ -52,15 +57,14 @@ def pollGridFrequency(callback=None, poll_period=0.5, notify_only_if_freq_change
 # --- EXAMPLE USAGE BELOW ---
 
 
-# pollGridFrequency()
+# pollGridFrequency(notify_only_if_freq_changed=False)
 """ Polls every 0.5s [default], only printing result [default]. Calls callback only if value changed [default]"""
 
 # pollGridFrequency(my_callback, 0.1)
 """ Polls with custom callback function my_callback taking ONE argument (frequency). I.e. my_callback(freq) is called. 
 Custom refresh rate """
 
-# pollGridFrequency(None, 2, False)
+pollGridFrequency(None, 1, False)
 """ No callback (prints values only), polling every 2s and returning values regardless of whether they have changed. """
-
 # print("This is freq: " + str(getCurrentFrequency()[1]))
 """ Single-capture frequency. """
