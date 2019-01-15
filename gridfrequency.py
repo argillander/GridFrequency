@@ -9,8 +9,10 @@ import json
 import time
 import math
 
-URL = "https://www.svk.se/Proxy/Proxy/?a=http://driftsdata.statnett.no/restapi/Frequency/BySecondWithXY?FromInTicks={" \
+URL = "http://driftsdata.statnett.no/restapi/Frequency/BySecondWithXY?FromInTicks={}&ToInTicks={}"
+URL2 = "https://www.svk.se/Proxy/Proxy/?a=http://driftsdata.statnett.no/restapi/Frequency/BySecondWithXY?FromInTicks={" \
       "}&ToInTicks={} "
+
 """ API URL. Unofficial URL as reverse-engineered from the Swedish National Grid's data aggregation website """
 
 
@@ -27,13 +29,12 @@ def getCurrentFrequency(last_time_stamp=0):
     # print("FURL: " + f_url)
     res = req.get(f_url)
     if res.ok:
-        print("Enschuldigen, got data!")
         js = json.loads(res.content)
         arr = js["Measurements"]
         cur_phase = arr[len(arr) - 1]
         return cur_phase[0], cur_phase[1]
     else:
-        print("Enschuldigen")
+        print("ERR: " + res.content)
 
 
 def pollGridFrequency(callback=None, poll_period=0.5, notify_only_if_freq_changed=True):
@@ -43,7 +44,6 @@ def pollGridFrequency(callback=None, poll_period=0.5, notify_only_if_freq_change
     last_freq = 0
     last_time_stamp = 0
     while True:
-        print("Enschulic")
         last_time_stamp, cur_freq = getCurrentFrequency(last_time_stamp)
         if (not notify_only_if_freq_changed) or (cur_freq != last_freq):
             last_freq = cur_freq
