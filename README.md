@@ -15,7 +15,7 @@ Polls every 0.5s [default], only printing result [default]. Calls callback only 
 ```python
  pollGridFrequency(my_callback, 0.1)
 ```
-Polls with custom callback function my_callback taking ONE argument (frequency). I.e. my_callback(freq) is called. Custom refresh rate.
+Polls with custom callback function `my_callback` taking ONE argument (frequency). I.e. my_callback(freq) is called. Custom refresh rate.
 ```python
  pollGridFrequency(None, 2, False)
 ```
