@@ -56,7 +56,6 @@ def pollGridFrequency(callback=None, poll_period=0.5, notify_only_if_freq_change
 
 # --- EXAMPLE USAGE BELOW ---
 
-
 # pollGridFrequency(notify_only_if_freq_changed=False)
 """ Polls every 0.5s [default], only printing result [default]. Calls callback only if value changed [default]"""
 
@@ -64,7 +63,21 @@ def pollGridFrequency(callback=None, poll_period=0.5, notify_only_if_freq_change
 """ Polls with custom callback function my_callback taking ONE argument (frequency). I.e. my_callback(freq) is called. 
 Custom refresh rate """
 
-pollGridFrequency(None, 1, False)
+#pollGridFrequency(None, 1, False)
 """ No callback (prints values only), polling every 2s and returning values regardless of whether they have changed. """
+
 # print("This is freq: " + str(getCurrentFrequency()[1]))
 """ Single-capture frequency. """
+
+
+
+if __name__ == "__main__":
+    try:
+        pollGridFrequency(None, 1, False)
+        # pollGridFrequency(notify_only_if_freq_changed=False)
+        # pollGridFrequency(my_callback, 0.1)
+        # print("This is freq: " + str(getCurrentFrequency()[1]))
+
+    except(KeyboardInterrupt):
+        print("Exiting GridFrequency Demo...")
+        exit(0)
