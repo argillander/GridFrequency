@@ -6,7 +6,16 @@ https://www.svk.se/drift-av-stamnatet/kontrollrummet/ (Swedish National Grid - I
 http://driftsdata.statnett.no/restapi/ (Norwegian National Grid - data provider)
 
 
-## Continous measurement
+
+## Installation
+This program only has one dependency; the ```requests``` module. The dependency can be be installed with ```pip``` using
+```bash
+pip install -r requirements.txt
+```
+## Usage
+Below are a few snippets of example usage. For more thorough usage, please see the source code. 
+
+### Continous measurement
 ```python
 pollGridFrequency()
 ```
@@ -21,13 +30,13 @@ Polls with custom callback function `my_callback` taking ONE argument (frequency
 ```
 No callback (prints values only), polling every 2s and returning values regardless of whether they have changed.
 
-## Obtain a single frequency measurement
+### Obtain a single frequency measurement
 ```python
  print("This is freq: " + str(getCurrentFrequency()[1]))
 ```
 Single-capture frequency.
 
-## Callback
+### Callback
 The data obtained in the continous polling is passed to a provided callback. The format of the callback is as follows
 ```python
 def my_callback(frequency):
