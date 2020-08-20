@@ -26,7 +26,6 @@ def getCurrentFrequency(last_time_stamp=0):
     If omitted or set to 0, returns all possible frequency measurements
     """
     f_url = URL.format(last_time_stamp, getCurrentTimeStamp())
-    # print("FURL: " + f_url)
     res = req.get(f_url)
     if res.ok:
         js = json.loads(res.content)
