@@ -8,7 +8,13 @@ http://driftsdata.statnett.no/restapi/ (Norwegian National Grid - data provider)
 
 
 ## Installation
-This program only has one dependency; the ```requests``` module. The dependency can be be installed with ```pip``` using
+This program only has one dependency; the ```requests``` module. The dependency can be be installed with ```pip``` from the PyPi-repository through 
+
+```bash
+pip install gridfrequency
+```
+or by cloning the repo and running
+
 ```bash
 pip install -r requirements.txt
 ```
